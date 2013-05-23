@@ -7,3 +7,5 @@
 * Native American villages nearby
 
 * Could base the magic system on Native American beliefs
+
+* For character improvement, we coud use both a traits system and a skill system (based on usage)
