@@ -1,0 +1,9 @@
+* Set in the wild west
+* Start in a town
+* Maybe the goal is hunting treasure hidden in a nearby mine
+* Town build like traditional movie style wild west town
+  * Bars, shops
+  * Provides opportunity for interesting level generation
+* Native American villages nearby
+
+* Could base the magic system on Native American beliefs
