@@ -1,3 +1,8 @@
+# Ignoring libtcod stuff - don't include it in source control
+libtcod.so
+libtcod.dll
+libtcodpy.py
+
 *.py[cod]
 *.py~
 
