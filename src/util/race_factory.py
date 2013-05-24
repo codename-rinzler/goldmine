@@ -1,5 +1,5 @@
-from race import *
-from stats_component import *
+from components.race import *
+from components.stats_component import *
 
 class RaceFactory:
     def __init__(self):

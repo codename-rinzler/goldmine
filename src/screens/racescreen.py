@@ -3,9 +3,9 @@ from framework.gameitem import GameItem
 from framework.ui.menu import Menu
 from framework.ui.textbox import TextBox
 from framework.ui.statbar import StatBar
-from race import *
-from race_factory import *
-from loadingscreen import *
+from components.race import *
+from util.race_factory import *
+from screens.loadingscreen import *
 
 class RaceScreen:
     def __init__(self, parent):
