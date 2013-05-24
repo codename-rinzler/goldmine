@@ -1,7 +1,7 @@
 import libtcodpy as libtcod
 from rect import Rect
 from tile import Tile
-from position_component import *
+from framework.components.position_component import PositionComponent
 
 class Map:
     def __init__(self, width, height, messenger, player):

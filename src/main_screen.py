@@ -1,6 +1,6 @@
-import libtcodpy as libtcode
-from menu import *
-from racescreen import *
+import libtcodpy as libtcod
+from framework.ui.menu import Menu
+from racescreen import RaceScreen
 
 class MainScreen:
     def __init__(self, parent):

@@ -1,7 +1,5 @@
 import libtcodpy as libtcod
-from map import *
-from messenger import *
-from fov import *
+from framework import map, messenger, fov
 
 class GameScreen:
     def __init__(self, gamemap, player, parent):

@@ -1,10 +1,10 @@
 import libtcodpy as libtcode
-from menu import *
-from textbox import *
+from framework.gameitem import GameItem
+from framework.ui.menu import Menu
+from framework.ui.textbox import TextBox
+from framework.ui.statbar import StatBar
 from race import *
 from race_factory import *
-from statbar import *
-from gameitem import *
 from loadingscreen import *
 
 class RaceScreen:

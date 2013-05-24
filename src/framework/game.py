@@ -1,7 +1,6 @@
 import libtcodpy as libtcod
-from main_screen import *
 
-class AndromedaGame:
+class RoguelikeGame:
     def __init__(self):
         self.screen_width = 80
         self.screen_height = 50
@@ -14,13 +13,10 @@ class AndromedaGame:
         
         self.console = libtcod.console_new(self.map_width, self.map_height)
 
-        self.state = 'main'
-        self.main_screen = MainScreen(self)
-
-        self.screens = [self.main_screen]
+        self.screens = []
 
     def initialise(self):
-        libtcod.console_set_custom_font('consolas10x10_gs_tc.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
+        libtcod.console_set_custom_font('framework/consolas10x10_gs_tc.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
         libtcod.console_init_root(self.screen_width, self.screen_height, 'Goldmine', False)
         libtcod.sys_set_fps(self.fps)
         libtcod.console_set_fullscreen(True)
@@ -54,9 +50,3 @@ class AndromedaGame:
 
     def push_screen(self, screen):
         self.screens.append(screen)
-
-
-if __name__ == '__main__':
-    game = AndromedaGame()
-    game.initialise()
-    game.run()

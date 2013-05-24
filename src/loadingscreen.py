@@ -1,8 +1,8 @@
 import libtcodpy as libtcod
-from textbox import *
-from map import *
-from messenger import *
-from fov import *
+from framework.ui.textbox import TextBox
+from framework.map import Map
+from framework.fov import FieldOfView
+from framework.messenger import Messenger
 from gamescreen import *
 
 class LoadingScreen:
