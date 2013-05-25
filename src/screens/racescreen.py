@@ -3,12 +3,14 @@ from framework.gameitem import GameItem
 from framework.map import Map
 from framework.messenger import Messenger
 from framework.fov import FieldOfView
+from framework.components.position_component import *
 from framework.ui.menu import Menu
 from framework.ui.textbox import TextBox
 from framework.ui.statbar import StatBar
 from components.race import *
 from util.race_factory import *
 from screens.gamescreen import *
+from generators.saloon import *
 
 class RaceScreen:
     def __init__(self, parent):
@@ -60,8 +62,8 @@ class RaceScreen:
         return 'turn-taken'
 
     def _do_mapgen(self, player):
-        self.gamemap = Map(40, 40, Messenger(4, 40), player)
-        self.gamemap.make_map()
-        fov = FieldOfView(player, self.gamemap, self.gamemap.width, self.gamemap.height)
-        fov.recompute()
-        self.gamemap.fov = fov
+        pos = PositionComponent(25, 1)
+        player.add_component(pos)
+
+        gen = SaloonGenerator()
+        self.gamemap = gen.generate_top_floor(player)

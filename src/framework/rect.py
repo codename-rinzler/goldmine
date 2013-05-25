@@ -13,3 +13,6 @@ class Rect:
     def intersect(self, other):
         return (self.x1 <= other.x2 and self.x2 >= other.x1 and
                 self.y1 <= other.y2 and self.y2 >= other.y2)
+
+    def __str__(self):
+        return "(" + str(self.x1) + "," + str(self.y1) + ") to ("+ str(self.x2) + "," + str(self.y2) + ")"
