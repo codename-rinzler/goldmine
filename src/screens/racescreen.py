@@ -1,11 +1,14 @@
-import libtcodpy as libtcode
+import libtcodpy as libtcod
 from framework.gameitem import GameItem
+from framework.map import Map
+from framework.messenger import Messenger
+from framework.fov import FieldOfView
 from framework.ui.menu import Menu
 from framework.ui.textbox import TextBox
 from framework.ui.statbar import StatBar
 from components.race import *
 from util.race_factory import *
-from screens.loadingscreen import *
+from screens.gamescreen import *
 
 class RaceScreen:
     def __init__(self, parent):
@@ -49,11 +52,16 @@ class RaceScreen:
             stats = self.factory.get_stats_for_race(race.race)
             player.add_component(race)
             player.add_component(stats)
-            
-            loadingscreen = LoadingScreen(self.parent)
-            loadingscreen.player = player
+
+            self._do_mapgen(player)
             self.parent.pop_screen()
-            self.parent.push_screen(loadingscreen)
-
-
+            self.parent.push_screen(GameScreen(self.gamemap, player, self.parent))
+            
         return 'turn-taken'
+
+    def _do_mapgen(self, player):
+        self.gamemap = Map(40, 40, Messenger(4, 40), player)
+        self.gamemap.make_map()
+        fov = FieldOfView(player, self.gamemap, self.gamemap.width, self.gamemap.height)
+        fov.recompute()
+        self.gamemap.fov = fov
