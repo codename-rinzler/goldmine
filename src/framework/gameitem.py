@@ -8,6 +8,7 @@ class GameItem:
 
     def add_component(self, component):
         self.components[component.name] = component
+        component.parent = self
 
     def render(self, panel):
         if 'position' in self.components:

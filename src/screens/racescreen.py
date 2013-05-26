@@ -4,6 +4,7 @@ from framework.map import Map
 from framework.messenger import Messenger
 from framework.fov import FieldOfView
 from framework.components.position_component import *
+from framework.components.mapref import *
 from framework.ui.menu import Menu
 from framework.ui.textbox import TextBox
 from framework.ui.statbar import StatBar
@@ -58,6 +59,8 @@ class RaceScreen:
             self._do_mapgen(player)
             self.parent.pop_screen()
             self.parent.push_screen(GameScreen(self.gamemap, player, self.parent))
+
+            player.add_component(MapReferenceComponent(self.gamemap))
             
         return 'turn-taken'
 

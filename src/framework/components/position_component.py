@@ -5,13 +5,23 @@ class PositionComponent:
         self.y = y
 
     def up(self):
-        self.y -= 1
+        if self._no_collision(0, -1):
+            self.y -= 1
 
     def down(self):
-        self.y += 1
+        if self._no_collision(0, 1):
+            self.y += 1
 
     def left(self):
-        self.x -= 1
+        if self._no_collision(-1, 0):
+            self.x -= 1
 
     def right(self):
-        self.x += 1
+        if self._no_collision(1, 0):
+            self.x += 1
+
+    def _no_collision(self, dx, dy):
+        if 'mapref' in self.parent.components:
+            gamemap = self.parent.components['mapref'].gamemap
+
+            return not gamemap.is_blocked(self.x + dx, self.y + dy)
