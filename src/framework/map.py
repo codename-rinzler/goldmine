@@ -24,11 +24,21 @@ class Map:
                     for x in range(self.width) ]
 
 
-    def create_room(self, room):
+    def create_room(self, room, tile_template = None):
         for x in range(room.x1, room.x2+1):
             for y in range(room.y1, room.y2+1):
-                self.map[x][y].blocked = False
-                self.map[x][y].block_sight = False
+                if tile_template:
+                    tile = self.map[x][y]
+                    tile.blocked = tile_template.blocked
+                    tile.block_sight = tile_template.block_sight
+                    tile.character = tile_template.character
+                    tile.bg_color = tile_template.bg_color
+                    tile.fg_color = tile_template.fg_color
+                    tile.shroud_bg_color = tile_template.shroud_bg_color
+                    tile.shroud_fg_color = tile_template.shroud_fg_color
+                else:
+                    self.map[x][y].blocked = False
+                    self.map[x][y].block_sight = False
 
     def is_blocked(self, x, y):
         if self.map[x][y].blocked:

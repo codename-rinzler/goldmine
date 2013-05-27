@@ -19,18 +19,18 @@ class GameScreen:
 
         for x in range(self.gamemap.width):
             for y in range(self.gamemap.height):
-                wall = self.gamemap.map[x][y].block_sight
+                tile = self.gamemap.map[x][y]
+                wall = tile.block_sight
                 if not self.gamemap.fov.visible(x, y):
-                    if self.gamemap.map[x][y].explored:
-                        if wall:
-                            libtcod.console_set_char_background(self.panel, x, y, self.color_dark_wall, libtcod.BKGND_SET)
-                        else:
-                            libtcod.console_set_char_background(self.panel, x, y, self.color_dark_ground, libtcod.BKGND_SET)
+                    if tile.explored:
+                        libtcod.console_set_char_background(self.panel, x, y, tile.shroud_bg_color, libtcod.BKGND_SET)
+                        libtcod.console_set_default_foreground(self.panel, tile.shroud_fg_color)
+                        libtcod.console_put_char(self.panel, x, y, tile.character, libtcod.BKGND_NONE)
                 else:
-                    if wall:
-                        libtcod.console_set_char_background(self.panel, x, y, self.color_light_wall, libtcod.BKGND_SET )
-                    else:
-                        libtcod.console_set_char_background(self.panel, x, y, self.color_light_ground, libtcod.BKGND_SET )
+                    libtcod.console_set_char_background(self.panel, x, y, tile.bg_color, libtcod.BKGND_SET)
+                    libtcod.console_set_default_foreground(self.panel, tile.fg_color)
+                    libtcod.console_put_char(self.panel, x, y, tile.character, libtcod.BKGND_NONE)
+
                     self.gamemap.map[x][y].explored = True
 
         self.player.render(self.panel)
